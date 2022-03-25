@@ -4,6 +4,8 @@
     "rootDir": "./src",
     "outDir": "./lib",
     "resolveJsonModule": true,
-    "moduleResolution": "node"
-  }
+    "moduleResolution": "node",
+    "declaration": true
+  },
+  "include": ["./src/*"]
 }

@@ -1,12 +1,12 @@
 {
   "name": "dotenv-multi-x",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Multiple `.env` file supported.",
   "main": "lib/index.js",
   "homepage": "https://github.com/x-ray-s/dotenv-multi-x",
   "scripts": {
     "dev": "tsc --watch -p .",
-    "build": "tsc -p ."
+    "build": "tsc"
   },
   "keywords": [
     "dotenv",
@@ -24,6 +24,7 @@
     "@types/yargs": "^17.0.10",
     "typescript": "^4.6.2"
   },
+  "types": "lib/index.d.ts",
   "dependencies": {
     "yargs": "^17.4.0"
   }
