@@ -1,6 +1,6 @@
 {
   "name": "dotenv-multi-x",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Multiple `.env` file supported.",
   "main": "lib/index.js",
   "homepage": "https://github.com/x-ray-s/dotenv-multi-x",

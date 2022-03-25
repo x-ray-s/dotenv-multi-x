@@ -45,7 +45,9 @@ console.log(process.env)
 
 `init` will get `mode` from `process.env` or `process.argv`, read the `.env*` files, parse the content, handle the inheritance, and reture an object.
 
-**options** : your mode options list. Default: `['local', 'dev', 'production', 'test', 'release', 'staging']`
+**options** : `String[]` your mode options list. Default: `['local', 'dev', 'production', 'test', 'release', 'staging']`
+
+**demandOption** : `Boolean` yargv `demandOption`, give user tips in command interface. Default: `false`
 
 ```javascript
 dotenv.init(['local', 'test', 'prod'])

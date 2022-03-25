@@ -61,14 +61,12 @@ function readAndParse(path: string) {
     }
 }
 
-function getConfig(mode: string) {
+function getConfig(mode?: string) {
     try {
-        const files = [
-            '.env',
-            '.env.local',
-            `.env.${mode}`,
-            `.env.${mode}.local`,
-        ]
+        const files = ['.env', '.env.local']
+        if (mode) {
+            files.concat([`.env.${mode}`, `.env.${mode}.local`])
+        }
         return files
             .map((i) => readAndParse(_resolve(i)))
             .reduce((pre, cur) => {
@@ -95,7 +93,8 @@ function setParsed(env: ENV, override?: boolean) {
 }
 
 function init(
-    options: string[] = ['dev', 'production', 'test', 'release', 'staging']
+    options: string[] = ['dev', 'production', 'test', 'release', 'staging'],
+    demandOption: boolean = false
 ) {
     let mode = process.env.mode
     if (!mode) {
@@ -103,7 +102,7 @@ function init(
             .options({
                 mode: {
                     choices: options,
-                    demandOption: true,
+                    demandOption,
                 },
             })
             .parseSync()
