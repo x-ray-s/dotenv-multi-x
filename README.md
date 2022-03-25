@@ -22,8 +22,14 @@ PORT=3001
 
 ## How to use
 
+```shell
+npm i dotenv-multi-x
+# or
+yarn add dotenv-multi-x
+```
+
 ```javascript
-import dotenv from 'dotenv-multi'
+import dotenv from 'dotenv-multi-x'
 dotenv.init()
 
 console.log(process.env)
@@ -57,7 +63,7 @@ dotenv.parse(Buffer.from('PROT=3001'))
 
 Accept a `mode` and read `.env*` files, and handle the inheritance. return finally result.
 
-## Test
+## Example
 
 ```bash
 # Windows Powershell
@@ -70,8 +76,16 @@ mode=local node ./example/index.mjs
 node .\example\index.mjs --mode=local
 ```
 
-## Suggestion
+## Suggest
 
 Add `.env.local*` in your `.gitignore` file.
 
 ## Why not dotenv
+
+When you run your code in multiple environments, you may need some different environments variable. But `dotenv` didn't support multiple `.env` files.
+
+If you don't use `docker` or other `CI/CD` environment variable to instead of `.env` file, or don't use shell script to replace `.env` file, the multiple files is the easiest way to make it work.
+
+For example, your server launched on port 3000, but you want to run on 3001 in local device, the `.env` file will be shared on repos which used `git`, so you need a `.env.local` file, this file has higher-priority then `.env` and it can doesn't share with `git`.
+
+You can create mutiple `.env*` files, and use them in different environments as easier as possible.

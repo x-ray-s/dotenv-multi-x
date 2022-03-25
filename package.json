@@ -1,17 +1,26 @@
 {
-  "name": "dotenv-multi",
-  "version": "1.0.0",
-  "description": "",
+  "name": "dotenv-multi-x",
+  "version": "0.1.1",
+  "description": "Multiple `.env` file supported.",
   "main": "lib/index.js",
+  "homepage": "https://github.com/x-ray-s/dotenv-multi-x",
   "scripts": {
     "dev": "tsc --watch -p .",
     "build": "tsc -p ."
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "dotenv",
+    "env",
+    "multiple",
+    "environment",
+    "env file"
+  ],
+  "author": "x-ray-s",
+  "email": "princesswar721@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
+    "@types/node": "^17.0.23",
     "@types/yargs": "^17.0.10",
     "typescript": "^4.6.2"
   },

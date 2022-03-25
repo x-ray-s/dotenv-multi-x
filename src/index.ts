@@ -49,19 +49,37 @@ function parse(src: Buffer) {
     return obj
 }
 
-function getConfig(mode: string) {
-    const file = path.resolve(process.cwd(), `.env.${mode}`)
+function _resolve(filename: string) {
+    return path.resolve(process.cwd(), filename)
+}
 
-    const envDefault = parse(
-        fs.readFileSync(path.resolve(process.cwd(), '.env'))
-    )
-
-    if (fs.existsSync(file)) {
-        const envConfig = parse(fs.readFileSync(file))
-        const merge = Object.assign(envDefault || {}, envConfig)
-        return merge
+function readAndParse(path: string) {
+    if (fs.existsSync(path)) {
+        return parse(fs.readFileSync(path))
+    } else {
+        return {}
     }
-    return envDefault as ENV
+}
+
+function getConfig(mode: string) {
+    try {
+        const files = [
+            '.env',
+            '.env.local',
+            `.env.${mode}`,
+            `.env.${mode}.local`,
+        ]
+        return files
+            .map((i) => readAndParse(_resolve(i)))
+            .reduce((pre, cur) => {
+                return {
+                    ...pre,
+                    ...cur,
+                }
+            }, {})
+    } catch (e) {
+        return {}
+    }
 }
 
 function setParsed(env: ENV, override?: boolean) {
@@ -77,14 +95,7 @@ function setParsed(env: ENV, override?: boolean) {
 }
 
 function init(
-    options: string[] = [
-        'local',
-        'dev',
-        'production',
-        'test',
-        'release',
-        'staging',
-    ]
+    options: string[] = ['dev', 'production', 'test', 'release', 'staging']
 ) {
     let mode = process.env.mode
     if (!mode) {
