@@ -6,7 +6,8 @@
   "homepage": "https://github.com/x-ray-s/dotenv-multi-x",
   "scripts": {
     "dev": "tsc --watch -p .",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "ts-node ./example/index.ts"
   },
   "keywords": [
     "dotenv",

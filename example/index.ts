@@ -1,5 +1,5 @@
 import dotenv from '../lib/index'
-
+import assert from 'assert'
 dotenv.init()
 
-console.log(process.env)
+assert.strictEqual(process.env.DEBUG, 'true')

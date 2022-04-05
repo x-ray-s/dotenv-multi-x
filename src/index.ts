@@ -92,6 +92,17 @@ function setParsed(env: ENV, override?: boolean) {
     })
 }
 
+const _getArgMode = () => {
+    const args = process.argv.slice(2)
+
+    const modePair = args.find((val) => {
+        return val.startsWith('--mode=') || val.startsWith('mode=')
+    })
+    console.log(modePair)
+}
+
+_getArgMode()
+
 function init(
     options: string[] = ['dev', 'production', 'test', 'release', 'staging'],
     demandOption: boolean = false
