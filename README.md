@@ -35,6 +35,14 @@ dotenv.init()
 console.log(process.env)
 ```
 
+## Commond Line
+
+```shell
+
+dotenv --mode=dev node ./example/cli.test.js
+
+```
+
 ## Methods
 
 - init
@@ -45,12 +53,8 @@ console.log(process.env)
 
 `init` will get `mode` from `process.env` or `process.argv`, read the `.env*` files, parse the content, handle the inheritance, and reture an object.
 
-**options** : `String[]` your mode options list. Default: `['local', 'dev', 'production', 'test', 'release', 'staging']`
-
-**demandOption** : `Boolean` yargv `demandOption`, give user tips in command interface. Default: `false`
-
 ```javascript
-dotenv.init(['local', 'test', 'prod'])
+dotenv.init()
 ```
 
 ### parse
@@ -69,13 +73,13 @@ Accept a `mode` and read `.env*` files, and handle the inheritance. return final
 
 ```bash
 # Windows Powershell
-$env:mode="local"
+$env:mode="dev"
 node .\example\index.mjs
 # Mac
-mode=local node ./example/index.mjs
+mode=dev node ./example/index.mjs
 
 # or
-node .\example\index.mjs --mode=local
+node .\example\index.mjs --mode=dev
 ```
 
 ## Suggest

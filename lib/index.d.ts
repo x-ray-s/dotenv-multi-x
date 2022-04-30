@@ -4,7 +4,7 @@ interface ENV {
 }
 declare function parse(src: Buffer): ENV;
 declare function getConfig(mode?: string): ENV;
-declare function init(options?: string[], demandOption?: boolean): ENV;
+declare function init(): ENV;
 declare const dotenv: {
     init: typeof init;
     parse: typeof parse;

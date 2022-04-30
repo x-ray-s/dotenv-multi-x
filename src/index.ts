@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import yargs from 'yargs'
 
+const argv = require('minimist')(process.argv.slice(2))
 interface ENV {
     [propName: string]: string
 }
@@ -63,9 +63,9 @@ function readAndParse(path: string) {
 
 function getConfig(mode?: string) {
     try {
-        const files = ['.env', '.env.local']
+        let files = ['.env', '.env.local']
         if (mode) {
-            files.concat([`.env.${mode}`, `.env.${mode}.local`])
+            files = files.concat([`.env.${mode}`, `.env.${mode}.local`])
         }
         return files
             .map((i) => readAndParse(_resolve(i)))
@@ -92,32 +92,12 @@ function setParsed(env: ENV, override?: boolean) {
     })
 }
 
-const _getArgMode = () => {
-    const args = process.argv.slice(2)
-
-    const modePair = args.find((val) => {
-        return val.startsWith('--mode=') || val.startsWith('mode=')
-    })
-    console.log(modePair)
-}
-
-_getArgMode()
-
-function init(
-    options: string[] = ['dev', 'production', 'test', 'release', 'staging'],
-    demandOption: boolean = false
-) {
+function init() {
     let mode = process.env.mode
     if (!mode) {
-        const argv = yargs(process.argv.slice(2))
-            .options({
-                mode: {
-                    choices: options,
-                    demandOption,
-                },
-            })
-            .parseSync()
-        mode = argv.mode
+        if (argv.mode) {
+            mode = argv.mode
+        }
     }
     const env = getConfig(mode)
     setParsed(env)
