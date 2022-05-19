@@ -1,6 +1,8 @@
+It contains the functions in `dotenv` `dotenv-expand` `dotenv-cli` 
+
 ## Features
 
-Support multiple `.env` files and keep the inheritance
+### Support multiple `.env` files and keep the inheritance
 
 Priority:
 
@@ -19,6 +21,14 @@ PORT=3001
 # out
 {"HOST": "127.0.0.1", "PORT": "3001"}
 ```
+
+### Support injects `.env` in commond Line
+
+```bash
+dotenv --mode=dev node ./example/cli.test.js
+```
+
+### Support expanded env variable to process.env
 
 ## How to use
 
