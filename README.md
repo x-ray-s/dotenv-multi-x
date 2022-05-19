@@ -1,4 +1,7 @@
-It contains the functions in `dotenv` `dotenv-expand` `dotenv-cli` 
+Contains the functions of the following libraries
+
++ [dotenv](https://github.com/motdotla/dotenv)
++ [dotenv-cli](https://github.com/entropitor/dotenv-cli)
 
 ## Features
 
@@ -22,13 +25,13 @@ PORT=3001
 {"HOST": "127.0.0.1", "PORT": "3001"}
 ```
 
+If you have used vite, it works the same way.
+
 ### Support injects `.env` in commond Line
 
 ```bash
 dotenv --mode=dev node ./example/cli.test.js
 ```
-
-### Support expanded env variable to process.env
 
 ## How to use
 
