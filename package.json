@@ -1,6 +1,6 @@
 {
   "name": "dotenv-multi-x",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Multiple `.env` file supported.",
   "main": "lib/index.js",
   "homepage": "https://github.com/x-ray-s/dotenv-multi-x",
@@ -8,7 +8,8 @@
     "dev": "tsc --watch -p .",
     "build": "tsc",
     "test": "ts-node ./example/index.test.ts --mode=dev",
-    "test:cli": "dotenv --mode=dev node ./example/cli.test.js"
+    "test:cli": "dotenv --mode=dev node ./example/cli.test.js",
+    "test:init": "ts-node ./example/init.test.ts --mode=dev"
   },
   "bin": {
     "dotenv": "./bin/cli.js"
