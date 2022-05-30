@@ -1,6 +1,11 @@
+Contains the functions of the following libraries
+
++ [dotenv](https://github.com/motdotla/dotenv)
++ [dotenv-cli](https://github.com/entropitor/dotenv-cli)
+
 ## Features
 
-Support multiple `.env` files and keep the inheritance
+### Support multiple `.env` files and keep the inheritance
 
 Priority:
 
@@ -18,6 +23,14 @@ PORT=3001
 
 # out
 {"HOST": "127.0.0.1", "PORT": "3001"}
+```
+
+If you have used vite, it works the same way.
+
+### Support injects `.env` in commond Line
+
+```bash
+dotenv --mode=dev node ./example/cli.test.js
 ```
 
 ## How to use
