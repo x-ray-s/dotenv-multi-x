@@ -1,20 +1,31 @@
 Contains the functions of the following libraries
 
-+ [dotenv](https://github.com/motdotla/dotenv)
-+ [dotenv-cli](https://github.com/entropitor/dotenv-cli)
+- [dotenv](https://github.com/motdotla/dotenv)
+- [dotenv-cli](https://github.com/entropitor/dotenv-cli)
 
-## Features
+## 👋 Features
+
+- Multiple `.env` file support
+- Command Line support
+- Assign a mode mode
 
 ### Support multiple `.env` files and keep the inheritance
 
-Priority:
+File Priority:
 
-- local > not unassigned local
-- mode > not unassigned mode
+- `.local` file > not unassigned local
+- `.mode` file > not unassigned mode
 
-e.g. `.env.{{mode}}.local` > `.env.{{mode}}` > `.env.local` > `.env`
+If the mode is 'dev', then the import order is:
+
+1. `.env.dev.local`
+2. `.env.dev`
+3. `.env.local`
+4. `.env`
 
 ```bash
+# the local file has higher priority
+
 # in .env file
 HOST=127.0.0.1
 PORT=3000
@@ -25,12 +36,33 @@ PORT=3001
 {"HOST": "127.0.0.1", "PORT": "3001"}
 ```
 
-If you have used vite, it works the same way.
+```bash
+# the assigned mode file has higher priority
 
-### Support injects `.env` in commond Line
+# in .env file
+PORT=3000
+# in .env.prod file
+PORT=80
+
+# mode=prod
+# out
+{"PORT": "80"}
+```
+
+> 💡If you have used vite, it works the same way.
+
+### Commond Line
 
 ```bash
-dotenv --mode=dev node ./example/cli.test.js
+$ dotenv node ./example/cli.test.js
+$ dotenv --mode=dev node ./example/cli.test.js
+```
+
+OR
+
+```bash
+$ node -r dotenv-multi-x/lib/init.js ./example/cli.test.js
+$ node -r dotenv-multi-x/lib/init.js ./example/cli.test.js --mode=dev
 ```
 
 ## How to use
