@@ -51,19 +51,7 @@ PORT=80
 
 > 💡If you have used vite, it works the same way.
 
-### Commond Line
 
-```bash
-$ dotenv node ./example/cli.test.js
-$ dotenv --mode=dev node ./example/cli.test.js
-```
-
-OR
-
-```bash
-$ node -r dotenv-multi-x/lib/init.js ./example/cli.test.js
-$ node -r dotenv-multi-x/lib/init.js ./example/cli.test.js --mode=dev
-```
 
 ## How to use
 
@@ -80,12 +68,27 @@ dotenv.init()
 console.log(process.env)
 ```
 
+or auto initial
+
+```javascript
+// notice, keep it in the top of file.
+import dotenv from 'dotenv-multi-x/lib/init'
+
+console.log(process.env)
+```
+
 ## Commond Line
 
-```shell
+```bash
+$ dotenv node ./example/cli.test.js
+$ dotenv --mode=dev node ./example/cli.test.js
+```
 
-dotenv --mode=dev node ./example/cli.test.js
+OR
 
+```bash
+$ node -r dotenv-multi-x/lib/init.js ./example/cli.test.js
+$ node -r dotenv-multi-x/lib/init.js ./example/cli.test.js --mode=dev
 ```
 
 ## Methods
